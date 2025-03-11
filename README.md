@@ -4,6 +4,7 @@ This is a simple JavaScript app that can be used to visualize a json file that c
 ## Notes
 For this to work, the input json file must be in a specific format. 
 An example file is given: database_schema.json
+
 This file contains the database schema of Open Quantum Materials Database, which can be accessed from the following link:
 https://www.oqmd.org/
 
