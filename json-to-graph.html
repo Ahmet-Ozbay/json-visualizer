@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Database Schema Visualizer</title>
+    <link type="text/css" rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1 class="app-title">JSON Database Schema Visualizer</h1>
+    <div class="controls">
+        <input type="file" id="file-input" accept=".json" hidden>
+        <button id="custom-file-button">Load a JSON file</button>
+        <span id="file-name"> No file loaded. &nbsp; &nbsp; </span>
+
+        <input type="text" id="filter-input" placeholder="Search table...">
+        <button id="apply-filter">Filter</button>
+        <button id="reset-filter">Reset Filter</button>
+        <button id="zoom-in">Zoom in</button>
+        <button id="zoom-out">Zoom out</button>
+        <button id="reset-view">Reset View</button>
+    </div>
+    <div id="container">
+        <div id="graph-container"></div>
+        <div id="table-details">
+            <div id="details-title">Click on a node to view details.</div>
+            <div id="details-content"></div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.23.0/cytoscape.min.js"></script>
+    <script src="https://unpkg.com/dagre/dist/dagre.min.js"></script>
+    <script src="https://unpkg.com/cytoscape-dagre/cytoscape-dagre.js"></script>
+    <script src="json-visualizer.js"></script>
+</body>
+
+</html>

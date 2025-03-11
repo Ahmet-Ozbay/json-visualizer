@@ -1,0 +1,6418 @@
+{
+  "tables": {
+    "accounts": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "user_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "host_id",
+          "type": "VARCHAR(63)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "username",
+          "type": "VARCHAR(255)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "run_path",
+          "type": "LONGTEXT",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "state",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "host_id_refs_name_423a8d77",
+          "referred_table": "hosts",
+          "referred_columns": [
+            "name"
+          ],
+          "constrained_columns": [
+            "host_id"
+          ]
+        },
+        {
+          "name": "user_id_refs_id_871ce8ee",
+          "referred_table": "users",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "user_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "accounts_27f00f5d",
+          "column_names": [
+            "host_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "accounts_6340c63c",
+          "column_names": [
+            "user_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "allocations": {
+      "columns": [
+        {
+          "name": "name",
+          "type": "VARCHAR(63)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "key",
+          "type": "VARCHAR(100)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "host_id",
+          "type": "VARCHAR(63)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "state",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "name"
+      ],
+      "foreign_keys": [
+        {
+          "name": "host_id_refs_name_e06366be",
+          "referred_table": "hosts",
+          "referred_columns": [
+            "name"
+          ],
+          "constrained_columns": [
+            "host_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "allocations_27f00f5d",
+          "column_names": [
+            "host_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "allocations_users": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "allocation_id",
+          "type": "VARCHAR(63)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "user_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "allocation_id_refs_name_c168cd43",
+          "referred_table": "allocations",
+          "referred_columns": [
+            "name"
+          ],
+          "constrained_columns": [
+            "allocation_id"
+          ]
+        },
+        {
+          "name": "user_id_refs_id_bc968769",
+          "referred_table": "users",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "user_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "allocation_id",
+          "column_names": [
+            "allocation_id",
+            "user_id"
+          ],
+          "unique": true,
+          "type": "UNIQUE"
+        },
+        {
+          "name": "allocations_users_427ae6a3",
+          "column_names": [
+            "allocation_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "allocations_users_6340c63c",
+          "column_names": [
+            "user_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "atoms": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "structure_id",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "site_id",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "element_id",
+          "type": "VARCHAR(9)",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "ox",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "x",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "y",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "z",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "fx",
+          "type": "DOUBLE",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "fy",
+          "type": "DOUBLE",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "fz",
+          "type": "DOUBLE",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "magmom",
+          "type": "DOUBLE",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "charge",
+          "type": "DOUBLE",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "volume",
+          "type": "DOUBLE",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "occupancy",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "wyckoff_id",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "element_id_refs_symbol_17f739bb",
+          "referred_table": "elements",
+          "referred_columns": [
+            "symbol"
+          ],
+          "constrained_columns": [
+            "element_id"
+          ]
+        },
+        {
+          "name": "site_id_refs_id_5614a168",
+          "referred_table": "sites",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "site_id"
+          ]
+        },
+        {
+          "name": "structure_id_refs_id_203b48ec",
+          "referred_table": "structures",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "structure_id"
+          ]
+        },
+        {
+          "name": "wyckoff_id_refs_id_6960b1bb",
+          "referred_table": "wyckoffsites",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "wyckoff_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "atoms_00a8885a",
+          "column_names": [
+            "element_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "atoms_93c9467c",
+          "column_names": [
+            "wyckoff_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "atoms_95d4059a",
+          "column_names": [
+            "structure_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "atoms_99732b5c",
+          "column_names": [
+            "site_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "auth_group": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR(150)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [],
+      "indexes": [
+        {
+          "name": "name",
+          "column_names": [
+            "name"
+          ],
+          "unique": true,
+          "type": "UNIQUE"
+        }
+      ]
+    },
+    "auth_group_permissions": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "group_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "permission_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "group_id_refs_id_f4b32aac",
+          "referred_table": "auth_group",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "group_id"
+          ]
+        },
+        {
+          "name": "permission_id_refs_id_6ba0f519",
+          "referred_table": "auth_permission",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "permission_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "auth_group_permissions_5f412f9a",
+          "column_names": [
+            "group_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "auth_group_permissions_83d7f98b",
+          "column_names": [
+            "permission_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "group_id",
+          "column_names": [
+            "group_id",
+            "permission_id"
+          ],
+          "unique": true,
+          "type": "UNIQUE"
+        }
+      ]
+    },
+    "auth_permission": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR(50)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "content_type_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "codename",
+          "type": "VARCHAR(100)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "content_type_id_refs_id_d043b34a",
+          "referred_table": "django_content_type",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "content_type_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "auth_permission_37ef4eb4",
+          "column_names": [
+            "content_type_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "content_type_id",
+          "column_names": [
+            "content_type_id",
+            "codename"
+          ],
+          "unique": true,
+          "type": "UNIQUE"
+        }
+      ]
+    },
+    "authors": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "last",
+          "type": "VARCHAR(30)",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "first",
+          "type": "VARCHAR(30)",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [],
+      "indexes": []
+    },
+    "calculations": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "configuration",
+          "type": "VARCHAR(15)",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "label",
+          "type": "VARCHAR(63)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "entry_id",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "path",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "composition_id",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "natoms",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "input_id",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "settings",
+          "type": "LONGTEXT",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "output_id",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "energy",
+          "type": "DOUBLE",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "energy_pa",
+          "type": "DOUBLE",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "magmom",
+          "type": "DOUBLE",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "magmom_pa",
+          "type": "DOUBLE",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "dos_id",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "band_gap",
+          "type": "DOUBLE",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "irreducible_kpoints",
+          "type": "DOUBLE",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "attempt",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "nsteps",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "converged",
+          "type": "TINYINT",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "runtime",
+          "type": "DOUBLE",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "composition_id_refs_formula_2003ae95",
+          "referred_table": "compositions",
+          "referred_columns": [
+            "formula"
+          ],
+          "constrained_columns": [
+            "composition_id"
+          ]
+        },
+        {
+          "name": "dos_id_refs_id_71f43f1a",
+          "referred_table": "dos",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "dos_id"
+          ]
+        },
+        {
+          "name": "entry_id_refs_id_fd924d28",
+          "referred_table": "entries",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "entry_id"
+          ]
+        },
+        {
+          "name": "input_id_refs_id_b4549153",
+          "referred_table": "structures",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "input_id"
+          ]
+        },
+        {
+          "name": "output_id_refs_id_b4549153",
+          "referred_table": "structures",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "output_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "calculations_15e2c79f",
+          "column_names": [
+            "input_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "calculations_2687c130",
+          "column_names": [
+            "composition_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "calculations_270b0ccc",
+          "column_names": [
+            "output_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "calculations_73e78684",
+          "column_names": [
+            "path"
+          ],
+          "unique": false
+        },
+        {
+          "name": "calculations_8c453b14",
+          "column_names": [
+            "dos_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "calculations_d51ecca1",
+          "column_names": [
+            "configuration"
+          ],
+          "unique": false
+        },
+        {
+          "name": "calculations_e8d920b6",
+          "column_names": [
+            "entry_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "calculations_element_set": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "calculation_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "element_id",
+          "type": "VARCHAR(9)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "calculation_id_refs_id_f9a7d4fb",
+          "referred_table": "calculations",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "calculation_id"
+          ]
+        },
+        {
+          "name": "element_id_refs_symbol_f6a5d654",
+          "referred_table": "elements",
+          "referred_columns": [
+            "symbol"
+          ],
+          "constrained_columns": [
+            "element_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "calculation_id",
+          "column_names": [
+            "calculation_id",
+            "element_id"
+          ],
+          "unique": true,
+          "type": "UNIQUE"
+        },
+        {
+          "name": "calculations_element_set_00a8885a",
+          "column_names": [
+            "element_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "calculations_element_set_7ab90288",
+          "column_names": [
+            "calculation_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "calculations_hubbard_set": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "calculation_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "hubbard_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "calculation_id_refs_id_1b457f8f",
+          "referred_table": "calculations",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "calculation_id"
+          ]
+        },
+        {
+          "name": "hubbard_id_refs_id_69d3b2cc",
+          "referred_table": "hubbards",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "hubbard_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "calculation_id",
+          "column_names": [
+            "calculation_id",
+            "hubbard_id"
+          ],
+          "unique": true,
+          "type": "UNIQUE"
+        },
+        {
+          "name": "calculations_hubbard_set_7ab90288",
+          "column_names": [
+            "calculation_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "calculations_hubbard_set_fe0076ff",
+          "column_names": [
+            "hubbard_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "calculations_meta_data": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "calculation_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "metadata_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "calculation_id_refs_id_d913490f",
+          "referred_table": "calculations",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "calculation_id"
+          ]
+        },
+        {
+          "name": "metadata_id_refs_id_282def41",
+          "referred_table": "meta_data",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "metadata_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "calculation_id",
+          "column_names": [
+            "calculation_id",
+            "metadata_id"
+          ],
+          "unique": true,
+          "type": "UNIQUE"
+        },
+        {
+          "name": "calculations_meta_data_7ab90288",
+          "column_names": [
+            "calculation_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "calculations_meta_data_a131f96d",
+          "column_names": [
+            "metadata_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "calculations_potential_set": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "calculation_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "potential_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "calculation_id_refs_id_5498caac",
+          "referred_table": "calculations",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "calculation_id"
+          ]
+        },
+        {
+          "name": "potential_id_refs_id_07b35ac6",
+          "referred_table": "vasp_potentials",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "potential_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "calculation_id",
+          "column_names": [
+            "calculation_id",
+            "potential_id"
+          ],
+          "unique": true,
+          "type": "UNIQUE"
+        },
+        {
+          "name": "calculations_potential_set_7ab90288",
+          "column_names": [
+            "calculation_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "calculations_potential_set_821445f4",
+          "column_names": [
+            "potential_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "compositions": {
+      "columns": [
+        {
+          "name": "formula",
+          "type": "VARCHAR(255)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "generic",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "ntypes",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "mass",
+          "type": "DOUBLE",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "meidema",
+          "type": "DOUBLE",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "structure_id",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "element_list",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "formula"
+      ],
+      "foreign_keys": [
+        {
+          "name": "structure_id_refs_id_548f203d",
+          "referred_table": "structures",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "structure_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "compositions_95d4059a",
+          "column_names": [
+            "structure_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "compositions_element_set": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "composition_id",
+          "type": "VARCHAR(255)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "element_id",
+          "type": "VARCHAR(9)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "composition_id_refs_formula_7356ccb0",
+          "referred_table": "compositions",
+          "referred_columns": [
+            "formula"
+          ],
+          "constrained_columns": [
+            "composition_id"
+          ]
+        },
+        {
+          "name": "element_id_refs_symbol_3dc1dd1c",
+          "referred_table": "elements",
+          "referred_columns": [
+            "symbol"
+          ],
+          "constrained_columns": [
+            "element_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "composition_id",
+          "column_names": [
+            "composition_id",
+            "element_id"
+          ],
+          "unique": true,
+          "type": "UNIQUE"
+        },
+        {
+          "name": "compositions_element_set_00a8885a",
+          "column_names": [
+            "element_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "compositions_element_set_2687c130",
+          "column_names": [
+            "composition_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "compositions_meta_data": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "composition_id",
+          "type": "VARCHAR(255)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "metadata_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "composition_id_refs_formula_a252a8f6",
+          "referred_table": "compositions",
+          "referred_columns": [
+            "formula"
+          ],
+          "constrained_columns": [
+            "composition_id"
+          ]
+        },
+        {
+          "name": "metadata_id_refs_id_4f1113a7",
+          "referred_table": "meta_data",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "metadata_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "composition_id",
+          "column_names": [
+            "composition_id",
+            "metadata_id"
+          ],
+          "unique": true,
+          "type": "UNIQUE"
+        },
+        {
+          "name": "compositions_meta_data_2687c130",
+          "column_names": [
+            "composition_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "compositions_meta_data_a131f96d",
+          "column_names": [
+            "metadata_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "django_admin_log": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "action_time",
+          "type": "DATETIME",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "object_id",
+          "type": "LONGTEXT",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "object_repr",
+          "type": "VARCHAR(200)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "action_flag",
+          "type": "SMALLINT",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "change_message",
+          "type": "LONGTEXT",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "content_type_id",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "user_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "djang_content_type_id_697914295151027a_fk_django_content_type_id",
+          "referred_table": "django_content_type",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "content_type_id"
+          ]
+        },
+        {
+          "name": "django_admin_log_user_id_52fdd58701c5f563_fk_users_id",
+          "referred_table": "users",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "user_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "djang_content_type_id_697914295151027a_fk_django_content_type_id",
+          "column_names": [
+            "content_type_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "django_admin_log_user_id_52fdd58701c5f563_fk_users_id",
+          "column_names": [
+            "user_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "django_content_type": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR(100)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "app_label",
+          "type": "VARCHAR(100)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "model",
+          "type": "VARCHAR(100)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [],
+      "indexes": [
+        {
+          "name": "app_label",
+          "column_names": [
+            "app_label",
+            "model"
+          ],
+          "unique": true,
+          "type": "UNIQUE"
+        }
+      ]
+    },
+    "django_migrations": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "app",
+          "type": "VARCHAR(255)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR(255)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "applied",
+          "type": "DATETIME",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [],
+      "indexes": []
+    },
+    "django_session": {
+      "columns": [
+        {
+          "name": "session_key",
+          "type": "VARCHAR(40)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "session_data",
+          "type": "LONGTEXT",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "expire_date",
+          "type": "DATETIME",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "session_key"
+      ],
+      "foreign_keys": [],
+      "indexes": [
+        {
+          "name": "django_session_b7b81f0c",
+          "column_names": [
+            "expire_date"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "django_site": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "domain",
+          "type": "VARCHAR(100)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR(50)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [],
+      "indexes": [
+        {
+          "name": "django_site_domain_a2e37b91_uniq",
+          "column_names": [
+            "domain"
+          ],
+          "unique": true,
+          "type": "UNIQUE"
+        }
+      ]
+    },
+    "dos": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "entry_id",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "gap",
+          "type": "DOUBLE",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "data",
+          "type": "LONGTEXT",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "file",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "entry_id_refs_id_8db2308b",
+          "referred_table": "entries",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "entry_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "dos_e8d920b6",
+          "column_names": [
+            "entry_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "dos_meta_data": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "dos_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "metadata_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "dos_id_refs_id_a0756dd6",
+          "referred_table": "dos",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "dos_id"
+          ]
+        },
+        {
+          "name": "metadata_id_refs_id_da2dcf01",
+          "referred_table": "meta_data",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "metadata_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "dos_id",
+          "column_names": [
+            "dos_id",
+            "metadata_id"
+          ],
+          "unique": true,
+          "type": "UNIQUE"
+        },
+        {
+          "name": "dos_meta_data_8c453b14",
+          "column_names": [
+            "dos_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "dos_meta_data_a131f96d",
+          "column_names": [
+            "metadata_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "elements": {
+      "columns": [
+        {
+          "name": "z",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR(20)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "symbol",
+          "type": "VARCHAR(9)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "group",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "period",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "mass",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "density",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "volume",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "atomic_radii",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "van_der_waals_radii",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "covalent_radii",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "melt",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "boil",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "specific_heat",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "electronegativity",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "first_ionization_energy",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "s_elec",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "p_elec",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "d_elec",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "f_elec",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "production",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "radioactive",
+          "type": "TINYINT",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "scattering_factors",
+          "type": "LONGTEXT",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "HHI_P",
+          "type": "FLOAT",
+          "nullable": true,
+          "default": "'0'",
+          "primary_key": false
+        },
+        {
+          "name": "HHI_R",
+          "type": "FLOAT",
+          "nullable": true,
+          "default": "'0'",
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "symbol"
+      ],
+      "foreign_keys": [],
+      "indexes": []
+    },
+    "entries": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "path",
+          "type": "VARCHAR(255)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "label",
+          "type": "VARCHAR(20)",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "duplicate_of_id",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "delta_e",
+          "type": "DOUBLE",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "stability",
+          "type": "DOUBLE",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "composition_id",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "reference_id",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "prototype_id",
+          "type": "VARCHAR(63)",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "ntypes",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "natoms",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "composition_id_refs_formula_26db5f9a",
+          "referred_table": "compositions",
+          "referred_columns": [
+            "formula"
+          ],
+          "constrained_columns": [
+            "composition_id"
+          ]
+        },
+        {
+          "name": "duplicate_of_id_refs_id_7c745d99",
+          "referred_table": "entries",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "duplicate_of_id"
+          ]
+        },
+        {
+          "name": "prototype_id_refs_name_c7f635a9",
+          "referred_table": "prototypes",
+          "referred_columns": [
+            "name"
+          ],
+          "constrained_columns": [
+            "prototype_id"
+          ]
+        },
+        {
+          "name": "reference_id_refs_id_70d129dd",
+          "referred_table": "publications",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "reference_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "entries_0836a46d",
+          "column_names": [
+            "prototype_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "entries_171cbadd",
+          "column_names": [
+            "reference_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "entries_1a906e41",
+          "column_names": [
+            "duplicate_of_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "entries_2687c130",
+          "column_names": [
+            "composition_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "path",
+          "column_names": [
+            "path"
+          ],
+          "unique": true,
+          "type": "UNIQUE"
+        }
+      ]
+    },
+    "entries_element_set": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "entry_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "element_id",
+          "type": "VARCHAR(9)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "element_id_refs_symbol_eed5b69b",
+          "referred_table": "elements",
+          "referred_columns": [
+            "symbol"
+          ],
+          "constrained_columns": [
+            "element_id"
+          ]
+        },
+        {
+          "name": "entry_id_refs_id_74299bd4",
+          "referred_table": "entries",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "entry_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "entries_element_set_00a8885a",
+          "column_names": [
+            "element_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "entries_element_set_e8d920b6",
+          "column_names": [
+            "entry_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "entry_id",
+          "column_names": [
+            "entry_id",
+            "element_id"
+          ],
+          "unique": true,
+          "type": "UNIQUE"
+        }
+      ]
+    },
+    "entries_meta_data": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "entry_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "metadata_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "entry_id_refs_id_96bd6e4d",
+          "referred_table": "entries",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "entry_id"
+          ]
+        },
+        {
+          "name": "metadata_id_refs_id_fe279d9f",
+          "referred_table": "meta_data",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "metadata_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "entries_meta_data_a131f96d",
+          "column_names": [
+            "metadata_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "entries_meta_data_e8d920b6",
+          "column_names": [
+            "entry_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "entry_id",
+          "column_names": [
+            "entry_id",
+            "metadata_id"
+          ],
+          "unique": true,
+          "type": "UNIQUE"
+        }
+      ]
+    },
+    "entries_project_set": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "entry_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "project_id",
+          "type": "VARCHAR(63)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "entry_id_refs_id_f123f545",
+          "referred_table": "entries",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "entry_id"
+          ]
+        },
+        {
+          "name": "project_id_refs_name_eac34d02",
+          "referred_table": "projects",
+          "referred_columns": [
+            "name"
+          ],
+          "constrained_columns": [
+            "project_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "entries_project_set_37952554",
+          "column_names": [
+            "project_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "entries_project_set_e8d920b6",
+          "column_names": [
+            "entry_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "entry_id",
+          "column_names": [
+            "entry_id",
+            "project_id"
+          ],
+          "unique": true,
+          "type": "UNIQUE"
+        }
+      ]
+    },
+    "entries_species_set": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "entry_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "species_id",
+          "type": "VARCHAR(8)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "entry_id_refs_id_aaa398d2",
+          "referred_table": "entries",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "entry_id"
+          ]
+        },
+        {
+          "name": "species_id_refs_name_41c67a49",
+          "referred_table": "species",
+          "referred_columns": [
+            "name"
+          ],
+          "constrained_columns": [
+            "species_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "entries_species_set_e1800d51",
+          "column_names": [
+            "species_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "entries_species_set_e8d920b6",
+          "column_names": [
+            "entry_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "entry_id",
+          "column_names": [
+            "entry_id",
+            "species_id"
+          ],
+          "unique": true,
+          "type": "UNIQUE"
+        }
+      ]
+    },
+    "expt_formation_energies": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "composition_id",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "delta_e",
+          "type": "DOUBLE",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "delta_g",
+          "type": "DOUBLE",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "source",
+          "type": "VARCHAR(127)",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "dft",
+          "type": "TINYINT",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "composition_id_refs_formula_53ad3a38",
+          "referred_table": "compositions",
+          "referred_columns": [
+            "formula"
+          ],
+          "constrained_columns": [
+            "composition_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "expt_formation_energies_2687c130",
+          "column_names": [
+            "composition_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "fits": {
+      "columns": [
+        {
+          "name": "name",
+          "type": "VARCHAR(255)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "name"
+      ],
+      "foreign_keys": [],
+      "indexes": []
+    },
+    "fits_dft": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "fit_id",
+          "type": "VARCHAR(255)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "calculation_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "calculation_id_refs_id_1d930e1f",
+          "referred_table": "calculations",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "calculation_id"
+          ]
+        },
+        {
+          "name": "fit_id_refs_name_5f821af7",
+          "referred_table": "fits",
+          "referred_columns": [
+            "name"
+          ],
+          "constrained_columns": [
+            "fit_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "fit_id",
+          "column_names": [
+            "fit_id",
+            "calculation_id"
+          ],
+          "unique": true,
+          "type": "UNIQUE"
+        },
+        {
+          "name": "fits_dft_7ab90288",
+          "column_names": [
+            "calculation_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "fits_dft_a433eb25",
+          "column_names": [
+            "fit_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "fits_elements": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "fit_id",
+          "type": "VARCHAR(255)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "element_id",
+          "type": "VARCHAR(9)",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [],
+      "indexes": [
+        {
+          "name": "fit_id",
+          "column_names": [
+            "fit_id",
+            "element_id"
+          ],
+          "unique": true,
+          "type": "UNIQUE"
+        },
+        {
+          "name": "fits_dft_7ab90288",
+          "column_names": [
+            "element_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "fits_dft_a433eb25",
+          "column_names": [
+            "fit_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "fits_experiments": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "fit_id",
+          "type": "VARCHAR(255)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "exptformationenergy_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "exptformationenergy_id_refs_id_04a39d9b",
+          "referred_table": "expt_formation_energies",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "exptformationenergy_id"
+          ]
+        },
+        {
+          "name": "fit_id_refs_name_b9725a45",
+          "referred_table": "fits",
+          "referred_columns": [
+            "name"
+          ],
+          "constrained_columns": [
+            "fit_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "fit_id",
+          "column_names": [
+            "fit_id",
+            "exptformationenergy_id"
+          ],
+          "unique": true,
+          "type": "UNIQUE"
+        },
+        {
+          "name": "fits_experiments_4e2d08d1",
+          "column_names": [
+            "exptformationenergy_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "fits_experiments_a433eb25",
+          "column_names": [
+            "fit_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "formation_energies": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "composition_id",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "entry_id",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "calculation_id",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "description",
+          "type": "VARCHAR(20)",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "fit_id",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "stability",
+          "type": "DOUBLE",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "delta_e",
+          "type": "DOUBLE",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "composition_id_refs_formula_09c6e912",
+          "referred_table": "compositions",
+          "referred_columns": [
+            "formula"
+          ],
+          "constrained_columns": [
+            "composition_id"
+          ]
+        },
+        {
+          "name": "entry_id_refs_id_d1c3b231",
+          "referred_table": "entries",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "entry_id"
+          ]
+        },
+        {
+          "name": "fit_id_refs_name_a1979eda",
+          "referred_table": "fits",
+          "referred_columns": [
+            "name"
+          ],
+          "constrained_columns": [
+            "fit_id"
+          ]
+        },
+        {
+          "name": "formation_energies_calculation_id_31b0aea7_fk_calculations_id",
+          "referred_table": "calculations",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "calculation_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "formation_energies_2687c130",
+          "column_names": [
+            "composition_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "formation_energies_7ab90288",
+          "column_names": [
+            "calculation_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "formation_energies_a433eb25",
+          "column_names": [
+            "fit_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "formation_energies_e8d920b6",
+          "column_names": [
+            "entry_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "idx_formation_composition",
+          "column_names": [
+            "composition_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "formation_energies_equilibrium": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "from_formationenergy_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "to_formationenergy_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "from_formationenergy_id_refs_id_0d1617f3",
+          "referred_table": "formation_energies",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "from_formationenergy_id"
+          ]
+        },
+        {
+          "name": "to_formationenergy_id_refs_id_0d1617f3",
+          "referred_table": "formation_energies",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "to_formationenergy_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "formation_energies_equilibrium_9055fea7",
+          "column_names": [
+            "from_formationenergy_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "formation_energies_equilibrium_923546a0",
+          "column_names": [
+            "to_formationenergy_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "from_formationenergy_id",
+          "column_names": [
+            "from_formationenergy_id",
+            "to_formationenergy_id"
+          ],
+          "unique": true,
+          "type": "UNIQUE"
+        }
+      ]
+    },
+    "google_analytics_analytics": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "site_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "analytics_code",
+          "type": "VARCHAR(100)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "site_id_refs_id_96eae1d7",
+          "referred_table": "django_site",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "site_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "google_analytics_analytics_99732b5c",
+          "column_names": [
+            "site_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "google_analytics_googleanalytics": {
+      "columns": [
+        {
+          "name": "site_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "web_property_id",
+          "type": "VARCHAR(15)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "site_id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "site_id_refs_id_c4e577db",
+          "referred_table": "django_site",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "site_id"
+          ]
+        }
+      ],
+      "indexes": []
+    },
+    "hosts": {
+      "columns": [
+        {
+          "name": "name",
+          "type": "VARCHAR(63)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "ip_address",
+          "type": "CHAR(15)",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "hostname",
+          "type": "VARCHAR(255)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "binaries",
+          "type": "LONGTEXT",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "ppn",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "nodes",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "walltime",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "sub_script",
+          "type": "VARCHAR(120)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "sub_text",
+          "type": "LONGTEXT",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "check_queue",
+          "type": "VARCHAR(180)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "checked_time",
+          "type": "DATETIME",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "running",
+          "type": "LONGTEXT",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "state",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "utilization",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "name"
+      ],
+      "foreign_keys": [],
+      "indexes": []
+    },
+    "hubbard_corrections": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "element_id",
+          "type": "VARCHAR(9)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "value",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "fit_id",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "hubbard_id",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "element_id_refs_symbol_c0af3ee3",
+          "referred_table": "elements",
+          "referred_columns": [
+            "symbol"
+          ],
+          "constrained_columns": [
+            "element_id"
+          ]
+        },
+        {
+          "name": "fit_id_refs_name_1ddaf49f",
+          "referred_table": "fits",
+          "referred_columns": [
+            "name"
+          ],
+          "constrained_columns": [
+            "fit_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "hubbard_corrections_00a8885a",
+          "column_names": [
+            "element_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "hubbard_corrections_a433eb25",
+          "column_names": [
+            "fit_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "hubbards": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "element_id",
+          "type": "VARCHAR(9)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "convention",
+          "type": "VARCHAR(20)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "ox",
+          "type": "DOUBLE",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "ligand_id",
+          "type": "VARCHAR(9)",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "u",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "l",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "element_id_refs_symbol_abe8c1cb",
+          "referred_table": "elements",
+          "referred_columns": [
+            "symbol"
+          ],
+          "constrained_columns": [
+            "element_id"
+          ]
+        },
+        {
+          "name": "ligand_id_refs_symbol_abe8c1cb",
+          "referred_table": "elements",
+          "referred_columns": [
+            "symbol"
+          ],
+          "constrained_columns": [
+            "ligand_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "hubbards_00a8885a",
+          "column_names": [
+            "element_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "hubbards_7be0c58b",
+          "column_names": [
+            "ligand_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "jobs": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "qid",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "walltime",
+          "type": "DATETIME",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "path",
+          "type": "VARCHAR(200)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "run_path",
+          "type": "VARCHAR(200)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "ncpus",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "created",
+          "type": "DATETIME",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "finished",
+          "type": "DATETIME",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "state",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "task_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "entry_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "account_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "allocation_id",
+          "type": "VARCHAR(63)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "account_id_refs_id_4f6c9c2d",
+          "referred_table": "accounts",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "account_id"
+          ]
+        },
+        {
+          "name": "allocation_id_refs_name_a63733e0",
+          "referred_table": "allocations",
+          "referred_columns": [
+            "name"
+          ],
+          "constrained_columns": [
+            "allocation_id"
+          ]
+        },
+        {
+          "name": "entry_id_refs_id_7436599e",
+          "referred_table": "entries",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "entry_id"
+          ]
+        },
+        {
+          "name": "task_id_refs_id_8e2f14be",
+          "referred_table": "tasks",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "task_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "jobs_427ae6a3",
+          "column_names": [
+            "allocation_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "jobs_93025c2f",
+          "column_names": [
+            "account_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "jobs_e8d920b6",
+          "column_names": [
+            "entry_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "jobs_ef96c3b8",
+          "column_names": [
+            "task_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "journals": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "code",
+          "type": "VARCHAR(10)",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "name",
+          "type": "LONGTEXT",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [],
+      "indexes": [
+        {
+          "name": "code",
+          "column_names": [
+            "code"
+          ],
+          "unique": true,
+          "type": "UNIQUE"
+        }
+      ]
+    },
+    "meta_data": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "type",
+          "type": "VARCHAR(15)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "value",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [],
+      "indexes": []
+    },
+    "operations": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "rotation_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "translation_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "rotation_id_refs_id_f107b660",
+          "referred_table": "rotations",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "rotation_id"
+          ]
+        },
+        {
+          "name": "translation_id_refs_id_a3d535f8",
+          "referred_table": "translations",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "translation_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "operations_359b5574",
+          "column_names": [
+            "rotation_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "operations_92be99ab",
+          "column_names": [
+            "translation_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "p_compositions": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "formula",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "element_list",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "ntypes",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [],
+      "indexes": []
+    },
+    "projects": {
+      "columns": [
+        {
+          "name": "name",
+          "type": "VARCHAR(63)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "priority",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "state",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "name"
+      ],
+      "foreign_keys": [],
+      "indexes": []
+    },
+    "projects_allocations": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "project_id",
+          "type": "VARCHAR(63)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "allocation_id",
+          "type": "VARCHAR(63)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "allocation_id_refs_name_40a6915a",
+          "referred_table": "allocations",
+          "referred_columns": [
+            "name"
+          ],
+          "constrained_columns": [
+            "allocation_id"
+          ]
+        },
+        {
+          "name": "project_id_refs_name_4ad0e998",
+          "referred_table": "projects",
+          "referred_columns": [
+            "name"
+          ],
+          "constrained_columns": [
+            "project_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "project_id",
+          "column_names": [
+            "project_id",
+            "allocation_id"
+          ],
+          "unique": true,
+          "type": "UNIQUE"
+        },
+        {
+          "name": "projects_allocations_37952554",
+          "column_names": [
+            "project_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "projects_allocations_427ae6a3",
+          "column_names": [
+            "allocation_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "projects_users": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "project_id",
+          "type": "VARCHAR(63)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "user_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "project_id_refs_name_04440906",
+          "referred_table": "projects",
+          "referred_columns": [
+            "name"
+          ],
+          "constrained_columns": [
+            "project_id"
+          ]
+        },
+        {
+          "name": "user_id_refs_id_6fdf9928",
+          "referred_table": "users",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "user_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "project_id",
+          "column_names": [
+            "project_id",
+            "user_id"
+          ],
+          "unique": true,
+          "type": "UNIQUE"
+        },
+        {
+          "name": "projects_users_37952554",
+          "column_names": [
+            "project_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "projects_users_6340c63c",
+          "column_names": [
+            "user_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "prototypes": {
+      "columns": [
+        {
+          "name": "name",
+          "type": "VARCHAR(63)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "structure_id",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "composition_id",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "name"
+      ],
+      "foreign_keys": [
+        {
+          "name": "composition_id_refs_formula_4cbde6d3",
+          "referred_table": "compositions",
+          "referred_columns": [
+            "formula"
+          ],
+          "constrained_columns": [
+            "composition_id"
+          ]
+        },
+        {
+          "name": "structure_id_refs_id_8545c5c6",
+          "referred_table": "structures",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "structure_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "prototypes_2687c130",
+          "column_names": [
+            "composition_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "prototypes_95d4059a",
+          "column_names": [
+            "structure_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "publications": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "journal_id",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "title",
+          "type": "LONGTEXT",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "page_first",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "page_last",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "year",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "volume",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "journal_id_refs_id_6a231cce",
+          "referred_table": "journals",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "journal_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "publications_b050c2da",
+          "column_names": [
+            "journal_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "publications_author_set": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "reference_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "author_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "author_id_refs_id_4e2c9783",
+          "referred_table": "authors",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "author_id"
+          ]
+        },
+        {
+          "name": "reference_id_refs_id_218304dd",
+          "referred_table": "publications",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "reference_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "publications_author_set_171cbadd",
+          "column_names": [
+            "reference_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "publications_author_set_e969df21",
+          "column_names": [
+            "author_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "reference_id",
+          "column_names": [
+            "reference_id",
+            "author_id"
+          ],
+          "unique": true,
+          "type": "UNIQUE"
+        }
+      ]
+    },
+    "reference_energies": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "element_id",
+          "type": "VARCHAR(9)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "value",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "fit_id",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "element_id_refs_symbol_54e7fff0",
+          "referred_table": "elements",
+          "referred_columns": [
+            "symbol"
+          ],
+          "constrained_columns": [
+            "element_id"
+          ]
+        },
+        {
+          "name": "fit_id_refs_name_355ca9b5",
+          "referred_table": "fits",
+          "referred_columns": [
+            "name"
+          ],
+          "constrained_columns": [
+            "fit_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "reference_energies_00a8885a",
+          "column_names": [
+            "element_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "reference_energies_a433eb25",
+          "column_names": [
+            "fit_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "rotations": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "a11",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "a12",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "a13",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "a21",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "a22",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "a23",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "a31",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "a32",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "a33",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [],
+      "indexes": []
+    },
+    "sites": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "structure_id",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "x",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "y",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "z",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "wyckoff_id",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [],
+      "indexes": [
+        {
+          "name": "sites_93c9467c",
+          "column_names": [
+            "wyckoff_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "sites_95d4059a",
+          "column_names": [
+            "structure_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "spacegroups": {
+      "columns": [
+        {
+          "name": "number",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "hm",
+          "type": "VARCHAR(30)",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "hall",
+          "type": "VARCHAR(30)",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "pearson",
+          "type": "VARCHAR(30)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "schoenflies",
+          "type": "VARCHAR(30)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "lattice_system",
+          "type": "VARCHAR(20)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "centrosymmetric",
+          "type": "TINYINT",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "number"
+      ],
+      "foreign_keys": [],
+      "indexes": []
+    },
+    "spacegroups_centering_vectors": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "spacegroup_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "translation_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "spacegroup_id_refs_number_ed89d240",
+          "referred_table": "spacegroups",
+          "referred_columns": [
+            "number"
+          ],
+          "constrained_columns": [
+            "spacegroup_id"
+          ]
+        },
+        {
+          "name": "translation_id_refs_id_14dcd295",
+          "referred_table": "translations",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "translation_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "spacegroup_id",
+          "column_names": [
+            "spacegroup_id",
+            "translation_id"
+          ],
+          "unique": true,
+          "type": "UNIQUE"
+        },
+        {
+          "name": "spacegroups_centering_vectors_15137c52",
+          "column_names": [
+            "spacegroup_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "spacegroups_centering_vectors_92be99ab",
+          "column_names": [
+            "translation_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "spacegroups_operations": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "spacegroup_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "operation_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "operation_id_refs_id_6017a271",
+          "referred_table": "operations",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "operation_id"
+          ]
+        },
+        {
+          "name": "spacegroup_id_refs_number_caa05a5d",
+          "referred_table": "spacegroups",
+          "referred_columns": [
+            "number"
+          ],
+          "constrained_columns": [
+            "spacegroup_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "spacegroup_id",
+          "column_names": [
+            "spacegroup_id",
+            "operation_id"
+          ],
+          "unique": true,
+          "type": "UNIQUE"
+        },
+        {
+          "name": "spacegroups_operations_15137c52",
+          "column_names": [
+            "spacegroup_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "spacegroups_operations_ba874c5c",
+          "column_names": [
+            "operation_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "species": {
+      "columns": [
+        {
+          "name": "name",
+          "type": "VARCHAR(8)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "element_id",
+          "type": "VARCHAR(9)",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "ox",
+          "type": "DOUBLE",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "name"
+      ],
+      "foreign_keys": [
+        {
+          "name": "element_id_refs_symbol_9a37629b",
+          "referred_table": "elements",
+          "referred_columns": [
+            "symbol"
+          ],
+          "constrained_columns": [
+            "element_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "species_00a8885a",
+          "column_names": [
+            "element_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "structures": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "entry_id",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "reference_id",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "label",
+          "type": "VARCHAR(63)",
+          "nullable": true,
+          "default": "''",
+          "primary_key": false
+        },
+        {
+          "name": "prototype_id",
+          "type": "VARCHAR(63)",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "measured",
+          "type": "TINYINT",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "composition_id",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "natoms",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "nsites",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "ntypes",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "x1",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "x2",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "x3",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "y1",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "y2",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "y3",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "z1",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "z2",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "z3",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "sxx",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "syy",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "szz",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "sxy",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "syz",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "szx",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "spacegroup_id",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "energy",
+          "type": "DOUBLE",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "energy_pa",
+          "type": "DOUBLE",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "magmom",
+          "type": "DOUBLE",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "magmom_pa",
+          "type": "DOUBLE",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "delta_e",
+          "type": "DOUBLE",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "meta_stability",
+          "type": "DOUBLE",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "fit_id",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "volume",
+          "type": "FLOAT",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "volume_pa",
+          "type": "FLOAT",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "coords",
+          "type": "LONGTEXT",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "composition_id_refs_formula_ea1e2f53",
+          "referred_table": "compositions",
+          "referred_columns": [
+            "formula"
+          ],
+          "constrained_columns": [
+            "composition_id"
+          ]
+        },
+        {
+          "name": "entry_id_refs_id_36a6ac50",
+          "referred_table": "entries",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "entry_id"
+          ]
+        },
+        {
+          "name": "fit_id_refs_name_5b6c6456",
+          "referred_table": "fits",
+          "referred_columns": [
+            "name"
+          ],
+          "constrained_columns": [
+            "fit_id"
+          ]
+        },
+        {
+          "name": "prototype_id_refs_name_4cc9e0aa",
+          "referred_table": "prototypes",
+          "referred_columns": [
+            "name"
+          ],
+          "constrained_columns": [
+            "prototype_id"
+          ]
+        },
+        {
+          "name": "reference_id_refs_id_38aa1d20",
+          "referred_table": "publications",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "reference_id"
+          ]
+        },
+        {
+          "name": "spacegroup_id_refs_number_4e213048",
+          "referred_table": "spacegroups",
+          "referred_columns": [
+            "number"
+          ],
+          "constrained_columns": [
+            "spacegroup_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "idx_structures_composition",
+          "column_names": [
+            "composition_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "idx_structures_id",
+          "column_names": [
+            "id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "structures_0836a46d",
+          "column_names": [
+            "prototype_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "structures_15137c52",
+          "column_names": [
+            "spacegroup_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "structures_171cbadd",
+          "column_names": [
+            "reference_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "structures_2687c130",
+          "column_names": [
+            "composition_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "structures_a433eb25",
+          "column_names": [
+            "fit_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "structures_e8d920b6",
+          "column_names": [
+            "entry_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "structures_element_set": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "structure_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "element_id",
+          "type": "VARCHAR(9)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "element_id_refs_symbol_ca907208",
+          "referred_table": "elements",
+          "referred_columns": [
+            "symbol"
+          ],
+          "constrained_columns": [
+            "element_id"
+          ]
+        },
+        {
+          "name": "structure_id_refs_id_132ac5ac",
+          "referred_table": "structures",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "structure_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "structure_id",
+          "column_names": [
+            "structure_id",
+            "element_id"
+          ],
+          "unique": true,
+          "type": "UNIQUE"
+        },
+        {
+          "name": "structures_element_set_00a8885a",
+          "column_names": [
+            "element_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "structures_element_set_95d4059a",
+          "column_names": [
+            "structure_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "structures_meta_data": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "structure_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "metadata_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "metadata_id_refs_id_d66597a3",
+          "referred_table": "meta_data",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "metadata_id"
+          ]
+        },
+        {
+          "name": "structure_id_refs_id_815f1968",
+          "referred_table": "structures",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "structure_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "idx_meta_structure_id",
+          "column_names": [
+            "structure_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "structure_id",
+          "column_names": [
+            "structure_id",
+            "metadata_id"
+          ],
+          "unique": true,
+          "type": "UNIQUE"
+        },
+        {
+          "name": "structures_meta_data_95d4059a",
+          "column_names": [
+            "structure_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "structures_meta_data_a131f96d",
+          "column_names": [
+            "metadata_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "structures_species_set": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "structure_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "species_id",
+          "type": "VARCHAR(8)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "species_id_refs_name_3d32d142",
+          "referred_table": "species",
+          "referred_columns": [
+            "name"
+          ],
+          "constrained_columns": [
+            "species_id"
+          ]
+        },
+        {
+          "name": "structure_id_refs_id_a248e517",
+          "referred_table": "structures",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "structure_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "structure_id",
+          "column_names": [
+            "structure_id",
+            "species_id"
+          ],
+          "unique": true,
+          "type": "UNIQUE"
+        },
+        {
+          "name": "structures_species_set_95d4059a",
+          "column_names": [
+            "structure_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "structures_species_set_e1800d51",
+          "column_names": [
+            "species_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "tasks": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "module",
+          "type": "VARCHAR(60)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "kwargs",
+          "type": "LONGTEXT",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "state",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "priority",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "created",
+          "type": "DATETIME",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "finished",
+          "type": "DATETIME",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "entry_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "entry_id_refs_id_71ea3c08",
+          "referred_table": "entries",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "entry_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "tasks_e8d920b6",
+          "column_names": [
+            "entry_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "tasks_project_set": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "task_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "project_id",
+          "type": "VARCHAR(63)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "project_id_refs_name_9e2ebc75",
+          "referred_table": "projects",
+          "referred_columns": [
+            "name"
+          ],
+          "constrained_columns": [
+            "project_id"
+          ]
+        },
+        {
+          "name": "task_id_refs_id_908bba1e",
+          "referred_table": "tasks",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "task_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "task_id",
+          "column_names": [
+            "task_id",
+            "project_id"
+          ],
+          "unique": true,
+          "type": "UNIQUE"
+        },
+        {
+          "name": "tasks_project_set_37952554",
+          "column_names": [
+            "project_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "tasks_project_set_ef96c3b8",
+          "column_names": [
+            "task_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "translations": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "x",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "y",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "z",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [],
+      "indexes": []
+    },
+    "users": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "password",
+          "type": "VARCHAR(128)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "last_login",
+          "type": "DATETIME",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "is_superuser",
+          "type": "TINYINT",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "username",
+          "type": "VARCHAR(30)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "first_name",
+          "type": "VARCHAR(30)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "last_name",
+          "type": "VARCHAR(30)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "email",
+          "type": "VARCHAR(75)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "is_staff",
+          "type": "TINYINT",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "is_active",
+          "type": "TINYINT",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "date_joined",
+          "type": "DATETIME",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [],
+      "indexes": [
+        {
+          "name": "username",
+          "column_names": [
+            "username"
+          ],
+          "unique": true,
+          "type": "UNIQUE"
+        }
+      ]
+    },
+    "users_groups": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "user_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "group_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "group_id_refs_id_e06c3832",
+          "referred_table": "auth_group",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "group_id"
+          ]
+        },
+        {
+          "name": "user_id_refs_id_1217de52",
+          "referred_table": "users",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "user_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "user_id",
+          "column_names": [
+            "user_id",
+            "group_id"
+          ],
+          "unique": true,
+          "type": "UNIQUE"
+        },
+        {
+          "name": "users_groups_5f412f9a",
+          "column_names": [
+            "group_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "users_groups_6340c63c",
+          "column_names": [
+            "user_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "users_user_permissions": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "user_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "permission_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "permission_id_refs_id_98f3dbf4",
+          "referred_table": "auth_permission",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "permission_id"
+          ]
+        },
+        {
+          "name": "user_id_refs_id_1b5f933e",
+          "referred_table": "users",
+          "referred_columns": [
+            "id"
+          ],
+          "constrained_columns": [
+            "user_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "user_id",
+          "column_names": [
+            "user_id",
+            "permission_id"
+          ],
+          "unique": true,
+          "type": "UNIQUE"
+        },
+        {
+          "name": "users_user_permissions_6340c63c",
+          "column_names": [
+            "user_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "users_user_permissions_83d7f98b",
+          "column_names": [
+            "permission_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "vasp_potentials": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "potcar",
+          "type": "LONGTEXT",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "element_id",
+          "type": "VARCHAR(9)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR(10)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "xc",
+          "type": "VARCHAR(3)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "gw",
+          "type": "TINYINT",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "paw",
+          "type": "TINYINT",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "us",
+          "type": "TINYINT",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "enmax",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "enmin",
+          "type": "DOUBLE",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "date",
+          "type": "VARCHAR(20)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "electrons",
+          "type": "LONGTEXT",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "element_id_refs_symbol_e1882ed7",
+          "referred_table": "elements",
+          "referred_columns": [
+            "symbol"
+          ],
+          "constrained_columns": [
+            "element_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "vasp_potentials_00a8885a",
+          "column_names": [
+            "element_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "wyckoffsites": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "spacegroup_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "symbol",
+          "type": "VARCHAR(1) COLLATE \"latin1_bin\"",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "multiplicity",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "x",
+          "type": "VARCHAR(8)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "y",
+          "type": "VARCHAR(8)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "name": "z",
+          "type": "VARCHAR(8)",
+          "nullable": false,
+          "default": null,
+          "primary_key": false
+        }
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "spacegroup_id_refs_number_32d37b81",
+          "referred_table": "spacegroups",
+          "referred_columns": [
+            "number"
+          ],
+          "constrained_columns": [
+            "spacegroup_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "wyckoffsites_15137c52",
+          "column_names": [
+            "spacegroup_id"
+          ],
+          "unique": false
+        }
+      ]
+    }
+  },
+  "relationships": [
+    {
+      "source_table": "accounts",
+      "source_column": "host_id",
+      "target_table": "hosts",
+      "target_column": "name"
+    },
+    {
+      "source_table": "accounts",
+      "source_column": "user_id",
+      "target_table": "users",
+      "target_column": "id"
+    },
+    {
+      "source_table": "allocations",
+      "source_column": "host_id",
+      "target_table": "hosts",
+      "target_column": "name"
+    },
+    {
+      "source_table": "allocations_users",
+      "source_column": "allocation_id",
+      "target_table": "allocations",
+      "target_column": "name"
+    },
+    {
+      "source_table": "allocations_users",
+      "source_column": "user_id",
+      "target_table": "users",
+      "target_column": "id"
+    },
+    {
+      "source_table": "atoms",
+      "source_column": "element_id",
+      "target_table": "elements",
+      "target_column": "symbol"
+    },
+    {
+      "source_table": "atoms",
+      "source_column": "site_id",
+      "target_table": "sites",
+      "target_column": "id"
+    },
+    {
+      "source_table": "atoms",
+      "source_column": "structure_id",
+      "target_table": "structures",
+      "target_column": "id"
+    },
+    {
+      "source_table": "atoms",
+      "source_column": "wyckoff_id",
+      "target_table": "wyckoffsites",
+      "target_column": "id"
+    },
+    {
+      "source_table": "auth_group_permissions",
+      "source_column": "group_id",
+      "target_table": "auth_group",
+      "target_column": "id"
+    },
+    {
+      "source_table": "auth_group_permissions",
+      "source_column": "permission_id",
+      "target_table": "auth_permission",
+      "target_column": "id"
+    },
+    {
+      "source_table": "auth_permission",
+      "source_column": "content_type_id",
+      "target_table": "django_content_type",
+      "target_column": "id"
+    },
+    {
+      "source_table": "calculations",
+      "source_column": "composition_id",
+      "target_table": "compositions",
+      "target_column": "formula"
+    },
+    {
+      "source_table": "calculations",
+      "source_column": "dos_id",
+      "target_table": "dos",
+      "target_column": "id"
+    },
+    {
+      "source_table": "calculations",
+      "source_column": "entry_id",
+      "target_table": "entries",
+      "target_column": "id"
+    },
+    {
+      "source_table": "calculations",
+      "source_column": "input_id",
+      "target_table": "structures",
+      "target_column": "id"
+    },
+    {
+      "source_table": "calculations",
+      "source_column": "output_id",
+      "target_table": "structures",
+      "target_column": "id"
+    },
+    {
+      "source_table": "calculations_element_set",
+      "source_column": "calculation_id",
+      "target_table": "calculations",
+      "target_column": "id"
+    },
+    {
+      "source_table": "calculations_element_set",
+      "source_column": "element_id",
+      "target_table": "elements",
+      "target_column": "symbol"
+    },
+    {
+      "source_table": "calculations_hubbard_set",
+      "source_column": "calculation_id",
+      "target_table": "calculations",
+      "target_column": "id"
+    },
+    {
+      "source_table": "calculations_hubbard_set",
+      "source_column": "hubbard_id",
+      "target_table": "hubbards",
+      "target_column": "id"
+    },
+    {
+      "source_table": "calculations_meta_data",
+      "source_column": "calculation_id",
+      "target_table": "calculations",
+      "target_column": "id"
+    },
+    {
+      "source_table": "calculations_meta_data",
+      "source_column": "metadata_id",
+      "target_table": "meta_data",
+      "target_column": "id"
+    },
+    {
+      "source_table": "calculations_potential_set",
+      "source_column": "calculation_id",
+      "target_table": "calculations",
+      "target_column": "id"
+    },
+    {
+      "source_table": "calculations_potential_set",
+      "source_column": "potential_id",
+      "target_table": "vasp_potentials",
+      "target_column": "id"
+    },
+    {
+      "source_table": "compositions",
+      "source_column": "structure_id",
+      "target_table": "structures",
+      "target_column": "id"
+    },
+    {
+      "source_table": "compositions_element_set",
+      "source_column": "composition_id",
+      "target_table": "compositions",
+      "target_column": "formula"
+    },
+    {
+      "source_table": "compositions_element_set",
+      "source_column": "element_id",
+      "target_table": "elements",
+      "target_column": "symbol"
+    },
+    {
+      "source_table": "compositions_meta_data",
+      "source_column": "composition_id",
+      "target_table": "compositions",
+      "target_column": "formula"
+    },
+    {
+      "source_table": "compositions_meta_data",
+      "source_column": "metadata_id",
+      "target_table": "meta_data",
+      "target_column": "id"
+    },
+    {
+      "source_table": "django_admin_log",
+      "source_column": "content_type_id",
+      "target_table": "django_content_type",
+      "target_column": "id"
+    },
+    {
+      "source_table": "django_admin_log",
+      "source_column": "user_id",
+      "target_table": "users",
+      "target_column": "id"
+    },
+    {
+      "source_table": "dos",
+      "source_column": "entry_id",
+      "target_table": "entries",
+      "target_column": "id"
+    },
+    {
+      "source_table": "dos_meta_data",
+      "source_column": "dos_id",
+      "target_table": "dos",
+      "target_column": "id"
+    },
+    {
+      "source_table": "dos_meta_data",
+      "source_column": "metadata_id",
+      "target_table": "meta_data",
+      "target_column": "id"
+    },
+    {
+      "source_table": "entries",
+      "source_column": "composition_id",
+      "target_table": "compositions",
+      "target_column": "formula"
+    },
+    {
+      "source_table": "entries",
+      "source_column": "duplicate_of_id",
+      "target_table": "entries",
+      "target_column": "id"
+    },
+    {
+      "source_table": "entries",
+      "source_column": "prototype_id",
+      "target_table": "prototypes",
+      "target_column": "name"
+    },
+    {
+      "source_table": "entries",
+      "source_column": "reference_id",
+      "target_table": "publications",
+      "target_column": "id"
+    },
+    {
+      "source_table": "entries_element_set",
+      "source_column": "element_id",
+      "target_table": "elements",
+      "target_column": "symbol"
+    },
+    {
+      "source_table": "entries_element_set",
+      "source_column": "entry_id",
+      "target_table": "entries",
+      "target_column": "id"
+    },
+    {
+      "source_table": "entries_meta_data",
+      "source_column": "entry_id",
+      "target_table": "entries",
+      "target_column": "id"
+    },
+    {
+      "source_table": "entries_meta_data",
+      "source_column": "metadata_id",
+      "target_table": "meta_data",
+      "target_column": "id"
+    },
+    {
+      "source_table": "entries_project_set",
+      "source_column": "entry_id",
+      "target_table": "entries",
+      "target_column": "id"
+    },
+    {
+      "source_table": "entries_project_set",
+      "source_column": "project_id",
+      "target_table": "projects",
+      "target_column": "name"
+    },
+    {
+      "source_table": "entries_species_set",
+      "source_column": "entry_id",
+      "target_table": "entries",
+      "target_column": "id"
+    },
+    {
+      "source_table": "entries_species_set",
+      "source_column": "species_id",
+      "target_table": "species",
+      "target_column": "name"
+    },
+    {
+      "source_table": "expt_formation_energies",
+      "source_column": "composition_id",
+      "target_table": "compositions",
+      "target_column": "formula"
+    },
+    {
+      "source_table": "fits_dft",
+      "source_column": "calculation_id",
+      "target_table": "calculations",
+      "target_column": "id"
+    },
+    {
+      "source_table": "fits_dft",
+      "source_column": "fit_id",
+      "target_table": "fits",
+      "target_column": "name"
+    },
+    {
+      "source_table": "fits_experiments",
+      "source_column": "exptformationenergy_id",
+      "target_table": "expt_formation_energies",
+      "target_column": "id"
+    },
+    {
+      "source_table": "fits_experiments",
+      "source_column": "fit_id",
+      "target_table": "fits",
+      "target_column": "name"
+    },
+    {
+      "source_table": "formation_energies",
+      "source_column": "composition_id",
+      "target_table": "compositions",
+      "target_column": "formula"
+    },
+    {
+      "source_table": "formation_energies",
+      "source_column": "entry_id",
+      "target_table": "entries",
+      "target_column": "id"
+    },
+    {
+      "source_table": "formation_energies",
+      "source_column": "fit_id",
+      "target_table": "fits",
+      "target_column": "name"
+    },
+    {
+      "source_table": "formation_energies",
+      "source_column": "calculation_id",
+      "target_table": "calculations",
+      "target_column": "id"
+    },
+    {
+      "source_table": "formation_energies_equilibrium",
+      "source_column": "from_formationenergy_id",
+      "target_table": "formation_energies",
+      "target_column": "id"
+    },
+    {
+      "source_table": "formation_energies_equilibrium",
+      "source_column": "to_formationenergy_id",
+      "target_table": "formation_energies",
+      "target_column": "id"
+    },
+    {
+      "source_table": "google_analytics_analytics",
+      "source_column": "site_id",
+      "target_table": "django_site",
+      "target_column": "id"
+    },
+    {
+      "source_table": "google_analytics_googleanalytics",
+      "source_column": "site_id",
+      "target_table": "django_site",
+      "target_column": "id"
+    },
+    {
+      "source_table": "hubbard_corrections",
+      "source_column": "element_id",
+      "target_table": "elements",
+      "target_column": "symbol"
+    },
+    {
+      "source_table": "hubbard_corrections",
+      "source_column": "fit_id",
+      "target_table": "fits",
+      "target_column": "name"
+    },
+    {
+      "source_table": "hubbards",
+      "source_column": "element_id",
+      "target_table": "elements",
+      "target_column": "symbol"
+    },
+    {
+      "source_table": "hubbards",
+      "source_column": "ligand_id",
+      "target_table": "elements",
+      "target_column": "symbol"
+    },
+    {
+      "source_table": "jobs",
+      "source_column": "account_id",
+      "target_table": "accounts",
+      "target_column": "id"
+    },
+    {
+      "source_table": "jobs",
+      "source_column": "allocation_id",
+      "target_table": "allocations",
+      "target_column": "name"
+    },
+    {
+      "source_table": "jobs",
+      "source_column": "entry_id",
+      "target_table": "entries",
+      "target_column": "id"
+    },
+    {
+      "source_table": "jobs",
+      "source_column": "task_id",
+      "target_table": "tasks",
+      "target_column": "id"
+    },
+    {
+      "source_table": "operations",
+      "source_column": "rotation_id",
+      "target_table": "rotations",
+      "target_column": "id"
+    },
+    {
+      "source_table": "operations",
+      "source_column": "translation_id",
+      "target_table": "translations",
+      "target_column": "id"
+    },
+    {
+      "source_table": "projects_allocations",
+      "source_column": "allocation_id",
+      "target_table": "allocations",
+      "target_column": "name"
+    },
+    {
+      "source_table": "projects_allocations",
+      "source_column": "project_id",
+      "target_table": "projects",
+      "target_column": "name"
+    },
+    {
+      "source_table": "projects_users",
+      "source_column": "project_id",
+      "target_table": "projects",
+      "target_column": "name"
+    },
+    {
+      "source_table": "projects_users",
+      "source_column": "user_id",
+      "target_table": "users",
+      "target_column": "id"
+    },
+    {
+      "source_table": "prototypes",
+      "source_column": "composition_id",
+      "target_table": "compositions",
+      "target_column": "formula"
+    },
+    {
+      "source_table": "prototypes",
+      "source_column": "structure_id",
+      "target_table": "structures",
+      "target_column": "id"
+    },
+    {
+      "source_table": "publications",
+      "source_column": "journal_id",
+      "target_table": "journals",
+      "target_column": "id"
+    },
+    {
+      "source_table": "publications_author_set",
+      "source_column": "author_id",
+      "target_table": "authors",
+      "target_column": "id"
+    },
+    {
+      "source_table": "publications_author_set",
+      "source_column": "reference_id",
+      "target_table": "publications",
+      "target_column": "id"
+    },
+    {
+      "source_table": "reference_energies",
+      "source_column": "element_id",
+      "target_table": "elements",
+      "target_column": "symbol"
+    },
+    {
+      "source_table": "reference_energies",
+      "source_column": "fit_id",
+      "target_table": "fits",
+      "target_column": "name"
+    },
+    {
+      "source_table": "spacegroups_centering_vectors",
+      "source_column": "spacegroup_id",
+      "target_table": "spacegroups",
+      "target_column": "number"
+    },
+    {
+      "source_table": "spacegroups_centering_vectors",
+      "source_column": "translation_id",
+      "target_table": "translations",
+      "target_column": "id"
+    },
+    {
+      "source_table": "spacegroups_operations",
+      "source_column": "operation_id",
+      "target_table": "operations",
+      "target_column": "id"
+    },
+    {
+      "source_table": "spacegroups_operations",
+      "source_column": "spacegroup_id",
+      "target_table": "spacegroups",
+      "target_column": "number"
+    },
+    {
+      "source_table": "species",
+      "source_column": "element_id",
+      "target_table": "elements",
+      "target_column": "symbol"
+    },
+    {
+      "source_table": "structures",
+      "source_column": "composition_id",
+      "target_table": "compositions",
+      "target_column": "formula"
+    },
+    {
+      "source_table": "structures",
+      "source_column": "entry_id",
+      "target_table": "entries",
+      "target_column": "id"
+    },
+    {
+      "source_table": "structures",
+      "source_column": "fit_id",
+      "target_table": "fits",
+      "target_column": "name"
+    },
+    {
+      "source_table": "structures",
+      "source_column": "prototype_id",
+      "target_table": "prototypes",
+      "target_column": "name"
+    },
+    {
+      "source_table": "structures",
+      "source_column": "reference_id",
+      "target_table": "publications",
+      "target_column": "id"
+    },
+    {
+      "source_table": "structures",
+      "source_column": "spacegroup_id",
+      "target_table": "spacegroups",
+      "target_column": "number"
+    },
+    {
+      "source_table": "structures_element_set",
+      "source_column": "element_id",
+      "target_table": "elements",
+      "target_column": "symbol"
+    },
+    {
+      "source_table": "structures_element_set",
+      "source_column": "structure_id",
+      "target_table": "structures",
+      "target_column": "id"
+    },
+    {
+      "source_table": "structures_meta_data",
+      "source_column": "metadata_id",
+      "target_table": "meta_data",
+      "target_column": "id"
+    },
+    {
+      "source_table": "structures_meta_data",
+      "source_column": "structure_id",
+      "target_table": "structures",
+      "target_column": "id"
+    },
+    {
+      "source_table": "structures_species_set",
+      "source_column": "species_id",
+      "target_table": "species",
+      "target_column": "name"
+    },
+    {
+      "source_table": "structures_species_set",
+      "source_column": "structure_id",
+      "target_table": "structures",
+      "target_column": "id"
+    },
+    {
+      "source_table": "tasks",
+      "source_column": "entry_id",
+      "target_table": "entries",
+      "target_column": "id"
+    },
+    {
+      "source_table": "tasks_project_set",
+      "source_column": "project_id",
+      "target_table": "projects",
+      "target_column": "name"
+    },
+    {
+      "source_table": "tasks_project_set",
+      "source_column": "task_id",
+      "target_table": "tasks",
+      "target_column": "id"
+    },
+    {
+      "source_table": "users_groups",
+      "source_column": "group_id",
+      "target_table": "auth_group",
+      "target_column": "id"
+    },
+    {
+      "source_table": "users_groups",
+      "source_column": "user_id",
+      "target_table": "users",
+      "target_column": "id"
+    },
+    {
+      "source_table": "users_user_permissions",
+      "source_column": "permission_id",
+      "target_table": "auth_permission",
+      "target_column": "id"
+    },
+    {
+      "source_table": "users_user_permissions",
+      "source_column": "user_id",
+      "target_table": "users",
+      "target_column": "id"
+    },
+    {
+      "source_table": "vasp_potentials",
+      "source_column": "element_id",
+      "target_table": "elements",
+      "target_column": "symbol"
+    },
+    {
+      "source_table": "wyckoffsites",
+      "source_column": "spacegroup_id",
+      "target_table": "spacegroups",
+      "target_column": "number"
+    }
+  ]
+}
