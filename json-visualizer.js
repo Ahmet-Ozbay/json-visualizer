@@ -1,4 +1,6 @@
-let tableDetails = {};
+        let tableDetails = {};
+        let originalPositions = {}; // Store original positions
+
         const cy = cytoscape({
             container: document.getElementById('graph-container'),
             style: [
@@ -60,7 +62,7 @@ let tableDetails = {};
                     const data = JSON.parse(e.target.result);
                     renderDatabaseSchema(data);
                 } catch (error) {
-                    alert('Error parsing the JSON file: ' + error.message);
+                    alert('JSON parse edilemedi: ' + error.message);
                 }
             };
             reader.readAsText(file);
@@ -81,7 +83,7 @@ let tableDetails = {};
         function renderDatabaseSchema(data) {
             cy.elements().remove();
             if (!data.tables) {
-                alert("Invalid JSON: There is no 'tables' field.");
+                alert("Geçersiz JSON: 'tables' alanı bulunamadı.");
                 return;
             }
 
@@ -142,7 +144,10 @@ let tableDetails = {};
             ${details.foreign_keys.map(fk => `<li>${fk.referred_table} (${fk.constrained_columns.join(', ')})</li>`).join('')}
         </ul>
     `;
-
+            // Store original positions
+            cy.nodes().forEach(n => {
+                originalPositions[n.id()] = { x: n.position('x'), y: n.position('y') };
+            });
             // Reset previous highlights
             cy.elements().removeClass('highlighted').removeClass('highlighted-edge');
 
@@ -169,20 +174,31 @@ let tableDetails = {};
             cy.layout({
                 name: 'breadthfirst',
                 directed: true,
-                roots: `#${evt.target.id()}`, // Set the tapped node as the root
-                spacingFactor: 1.5, // Adjust spacing
+                roots: `#${evt.target.id()}`,
+                spacingFactor: 1.5,
                 eles: cy.nodes().filter(node => node.style('display') === 'element')
             }).run();
 
             cy.fit();
         });
         document.getElementById('graph-container').addEventListener('contextmenu', function (event) {
-            event.preventDefault(); // Prevent the default context menu
+            event.preventDefault();
+            restoreFullView();
+        }); document.getElementById('reset-filter').addEventListener('click', restoreFullView);
+
+        function restoreFullView() {
             cy.nodes().forEach(node => node.style('display', 'element'));
             cy.edges().forEach(edge => edge.style('display', 'element'));
             cy.elements().removeClass('highlighted').removeClass('highlighted-edge');
-            cy.fit(); // Refit the graph to the full view
-        });
+
+            // Restore original positions
+            cy.nodes().forEach(n => {
+                if (originalPositions[n.id()]) {
+                    n.position(originalPositions[n.id()]);
+                }
+            });
+            cy.fit();
+        }
         document.getElementById('reset-filter').addEventListener('click', function () {
             cy.nodes().forEach(node => node.style('display', 'element'));
             cy.edges().forEach(edge => edge.style('display', 'element'));
@@ -227,6 +243,7 @@ let tableDetails = {};
                 };
                 reader.readAsText(file);
             } else {
-                fileNameDisplay.textContent = "No file has been chosen.";
+                fileNameDisplay.textContent = "No file chosen";
             }
         });
+    </script>
